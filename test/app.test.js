@@ -17,10 +17,10 @@ describe('Feathers application tests (with jest)', () => {
     this.server.once('listening', () => done());
   });
 
-  afterAll(async (done) => {
+  afterAll(async () => {
     await mongoose.disconnect();
     await this.server.close();
-    done();
+    await mongoose.connection.close();
   });
 
   it('starts and shows the index page', () => {
