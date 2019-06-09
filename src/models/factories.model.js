@@ -5,11 +5,11 @@ module.exports = function (app) {
     user: { type: String, required: true },
     machineGrid: [[{
       position: { type: Array, required: true },
-      machine: { type: Mixed, required: true }
+      machine: { type: Schema.Types.Mixed, required: true }
     }]],
     resourceGrid: [[{
       position: { type: Array, required: true },
-      resources: { type: Mixed, required: true }
+      resources: { type: Schema.Types.Mixed, required: true }
     }]]
   }, {
     timestamps: true,
