@@ -3,6 +3,8 @@ module.exports = function (app) {
   const { Schema } = mongooseClient;
   const factories = new Schema({
     user: { type: String, required: true },
+    name: { type: String, required: true },
+    machineNumber: { type: Number, required: true },
     machineGrid: [[{
       position: { type: Array, required: true },
       machine: { type: Schema.Types.Mixed, required: true }
