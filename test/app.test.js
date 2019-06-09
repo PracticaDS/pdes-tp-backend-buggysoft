@@ -1,6 +1,7 @@
 const rp = require('request-promise');
 const url = require('url');
 const app = require('../src/app');
+const mongoose = require('mongoose');
 
 const port = app.get('port') || 3030;
 const getUrl = pathname => url.format({
@@ -16,8 +17,10 @@ describe('Feathers application tests (with jest)', () => {
     this.server.once('listening', () => done());
   });
 
-  afterAll(done => {
-    this.server.close(done);
+  afterAll(async () => {
+    await mongoose.disconnect();
+    await this.server.close();
+    await mongoose.connection.close();
   });
 
   it('starts and shows the index page', () => {
