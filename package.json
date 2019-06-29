@@ -41,6 +41,7 @@
     "mongodb-core": "^3.2.6",
     "mongoose": "^5.5.11",
     "morgan": "^1.9.1",
+    "prom-client": "^11.5.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.2.1"
   },
@@ -48,7 +49,6 @@
     "eslint": "^5.16.0",
     "jest": "^24.7.1",
     "nodemon": "^1.18.11",
-    "prom-client": "^11.5.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   }

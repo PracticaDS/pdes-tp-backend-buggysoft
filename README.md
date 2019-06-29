@@ -2,6 +2,22 @@
 
 > Back-end for pdes-tp
 
+## Run locally with docker
+1. You need to setup a local network
+```
+docker network create buggynet
+```
+
+2. Run mongo attached to that network
+```
+docker run -d --network buggynet --name mongo mongo
+```
+
+3. And attach the docker image to that network as well. Then our connection string will look like this `MONGO_URL=mongodb://mongo.buggynet:27017/pdes_tp_backend_buggysoft`
+```
+docker run -a STDOUT -p 3001:3001 --network buggynet -e MONGO_URL=mongodb://mongo.buggynet:27017/pdes_tp_backend_buggysoft pdes-tp-backend-buggysoft
+```
+
 ## About
 
 This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
