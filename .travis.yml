@@ -1,16 +1,22 @@
 language: node_js
 services:
-  - mongodb
+- mongodb
 node_js:
-  - "10.15.1"
+- 10.16.0
 cache:
-  # Caches $HOME/.npm when npm ci is default script command
-  # Caches node_modules in all other cases
   npm: true
   directories:
-    # we also need to cache folder with Cypress binary
-    - ~/.cache
+  - "~/.cache"
 install:
-  - npm ci
+- npm ci
 script:
-  - npm run test
+- npm run test
+deploy:
+- provider: script
+  script: bash docker_push.sh
+  on:
+    branch: master
+env:
+  global:
+  - secure: F7KFTNuGK7UanTQ/7Nb6eh3t+lMIb+CUYqdjyEAevtH898jRhHicWe/EkNC9DtaEPevECbuO721NSqNUjhp0XH5QYpDVIRc14uYerVMfFyNkdPPPg192bF/I1ExtkmY3+bReqyTC8UxI8pcFOv9UL1+yXLa5NKFmmtLm/xrwD7W1IZHrecZdlwwfa15kti75dOAjMPEZlkF/SQuyTeOrzuRTv5UyTL0taDLA7j3kyszWgEsIwMGCYXbYqqImO6f6fL5Zzvrb1tFOc4yPKXnY86hSmUjmEOb7FvBffkHYcBcFRFeA5r10Ng4Wjw23b1MrLe/dOc0K+0wA+P1wqjXVBGeIAGwm+Dnd32F5GhwLMDVArA4r0dAfPdnq17cMjZVo+qauptJFa6sL9tA4cVY+bWqOR9tsheyxvjN93BHXWx5ivJBEmp5+e5/Jh27weWGhW9XyLlFgNV6f2DNVk5oGFFqUrfBQEBhQ5KbdedxRNyPpYJJLGpD3LMRtMtNhMEIFGut0s02kOD6lDbhoLctAT46O3PDbkLkqhU4J2ePb6wBjQA2ylN3vWeHE0uLvCQdBKnjK5ltQSVPHomgNlQmQQLCaRxSSDV3xOthx/vq307ESiKe4BPbZ8isKJVE9xNYtR6Z+gZtz2BIfRugNaUmMzTt7dd9yBZFli9vIugFdd7g=
+  - secure: lWadCMqLIQEGkx5HPhhgUSBDbhjVzxGJZgR7cRQtoSzW5CXZODyVE2WJvtsQyDveyLYNw2ukssHtdxT+ZUthW5mbcd/EHlzBIchXXjbgENAgTuHIWDxMHoA05ofSrv9/nr793CC879kV8b386hZ/IMLMH1z6kPGzJYacLSi1J4GNNRuBlmSNvB1Rh9GvX9Hxdp0rgWNcvmW/e4Na5htPVoQ7dxMy84F7W8/GF2/yN8I35DXHUduFc+6zkBJO4wO3DPjNmHUDb3zyfgPiOhwJa4HCYU+0xLj24mEnpflmucchIdybeJscEJJQv1wzL+wBo18uPGH9INskUkVGVrjtuKyvpxaMxd9yxcY5kEF7oNeaHofnMIm1riiM/58SKBZqA864IypnhUsp6sXsWyB0+e31L8RMsbTsXgRUacp7SuVU0uc+zyqVqyVT8X0W0y+fHqVCgbGkpCyF4ST48JCp8h7TtuOn8uVWY/Z5NBeIfyWh1zvkAryxkjN+lYb8C+WiAvrAu32oSX1fIB+1rmVKDx5H2o/HmFffi+D7g7J3ur5edD4/nuxORAppiqPLTqXlYmF7531X73XUYoZ+0qSsb4BD1XPJQ8zSz3Dwl0yZJuCLvWzSWZjp5/O3ndHHf0kAyrA7atC7b8f4gYADnUlQ9pVwNLpAlejmCY0/V+e2J5c=
